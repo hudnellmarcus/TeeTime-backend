@@ -33,7 +33,6 @@ router.delete('dashboard/:id', (req, res) => {
     });
 });
 
-
 // Update
 router.put('dashboard/:id', async (req, res) => {
     try {
@@ -50,8 +49,6 @@ router.put('dashboard/:id', async (req, res) => {
 });
 
 
-
-
 // Create
 router.post('/dashboard', async (req, res) => {
     try {
@@ -61,9 +58,6 @@ router.post('/dashboard', async (req, res) => {
     }
 
 });
-
-
-
 
 //Edit
 router.get('/edit/:id', (req, res) => {
