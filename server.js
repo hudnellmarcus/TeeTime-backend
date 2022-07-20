@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const User = require('./models/user');
-const TeeTime = require('./models/teetimes');
+// const TeeTime = require('./models/teetimes');
 
 // TEST SERVER AND DATABASE VARIABLES ////////////////
 const ronin = require('ronin-server');
