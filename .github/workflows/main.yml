@@ -33,20 +33,20 @@ jobs:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-          ${{ runner.os }}-buildx-
+           ${{ runner.os }}-buildx-
       
-       if: github.event_name != 'pull_request'
-    	 uses: docker/login-action@v1
-    	 with:
-      	registry: ghcr.io
-      	username: ${{ github.repository_owner }}
-      	password: ${{ secrets.ghcr_TOKEN }}
-        tags: ghcr.io/nebuk89/simplewhale:latest
+      - if: github.event_name != 'pull_request'
+    	- uses: docker/login-action@v1
+    	- with:
+      	  registry: ghcr.io
+      	  username: ${{ github.repository_owner }}
+      	  password: ${{ secrets.ghcr_TOKEN }}
+          tags: ghcr.io/nebuk89/simplewhale:latest
       -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
+      - name: Build and push
+      - id: docker_build
+      - uses: docker/build-push-action@v2
+      - with:
           context: ./
           file: ./Dockerfile
           push: true
@@ -55,8 +55,8 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       -
 
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+      - name: Image digest
+      - run: echo ${{ steps.docker_build.outputs.digest }}
       
       # Runs a single command using the runners shell
       - name: Run a one-line script
